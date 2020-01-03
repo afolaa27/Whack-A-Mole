@@ -1,0 +1,195 @@
+body{
+	background-color: black;
+	text-align: center;
+	display: block;
+}
+#scoreDiv{
+	
+	display:block;
+	height: 100px;
+	width: 100px;
+	float: left;
+	
+}
+#properties{
+	display:block;
+	
+	width: auto;
+	height: auto;
+	float:  center;
+}
+h1{
+	font-family: "Courier New", Courier, monospace;
+	font-size: 25px;
+	letter-spacing: 2px;
+	word-spacing: 2px;
+	color: green;
+	font-weight: normal;
+	text-decoration: none;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+}
+
+#levelDiv{
+	
+	display: block; 
+	height: 100px;
+	width: 100px;
+	float: right;
+	
+}
+#squareHolder{
+	background-image : url("https://d27nqrvkk22y65.cloudfront.net/product_image/image/3798/big_98ce27cf38.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border:1px solid green;
+	display: inline-block;
+	height: 500px;
+	width: 500px;
+	margin-left: 10%;
+	
+}
+#nameDiv{
+	
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+	padding: auto;
+}
+#timerDiv{
+	
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+
+}
+#buttonDiv{
+
+	padding-top: 2%;
+	display: block;
+	padding-left: 5%;
+}
+
+#buttons {
+	box-shadow: 0px 10px 14px -7px #277327;
+	background:linear-gradient(to bottom, #000000 5%, #409946 100%);
+	background-color:#000000;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3e8a3e;
+
+}
+#buttons:hover {
+	background:linear-gradient(to bottom, #409946 5%, #000000 100%);
+	background-color:#409946;
+}
+#buttons:active {
+	position:relative;
+	top:1px;
+}
+#number {
+	box-shadow: 0px 10px 14px -7px #277327;
+	background:linear-gradient(to bottom, #000000 5%, #409946 100%);
+	background-color:#000000;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3e8a3e;
+
+}
+#number:hover {
+	background:linear-gradient(to bottom, #409946 5%, #000000 100%);
+	background-color:#409946;
+}
+#number:active {
+	position:relative;
+	top:1px;
+}
+#name {
+
+	box-shadow: 0px 10px 14px -7px #277327;
+	background:linear-gradient(to bottom, #000000 5%, #409946 100%);
+	background-color:#000000;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3e8a3e;
+
+}
+#name:hover {
+	background:linear-gradient(to bottom, #409946 5%, #000000 100%);
+	background-color:#409946;
+}
+#name:active {
+	position:relative;
+	top:1px;
+}
+
+#submit {
+	box-shadow: 0px 10px 14px -7px #277327;
+	background:linear-gradient(to bottom, #000000 5%, #409946 100%);
+	background-color:#000000;
+	border-radius:8px;
+	display: block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3e8a3e;
+	
+}
+#submit:hover {
+	background:linear-gradient(to bottom, #409946 5%, #000000 100%);
+	background-color:#409946;
+}
+#submit:active {
+	position:relative;
+	top:1px;
+}
+#submitButton{
+	display: flex;
+	justify-content: center;
+	margin-top: 3%;
+}
+#startValues{
+	margin-top:10%;
+}
+#squareHolder {
+	margin-top: 1%;
+}
+#squareHolder div{
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;	
+	width: 163px;
+	height: 163px;
+	margin-right:1px;
+	display: inline-block;
+}
+.square{
+	border: 1px solid brown;	
+	border-radius: 90px;
+}
