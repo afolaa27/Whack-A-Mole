@@ -3,10 +3,9 @@
 
 	class Square {
 		constructor() {
-			
-			
 			this.clicked = false
-
+		} setClicked(){
+			this.clicked = true
 		}
 	}
 	const game = {
@@ -17,11 +16,12 @@
 		squares : [],
 		randNum: 0,
 		moleLocation: 0,
+		
 
 		startGame(){
 			showStatus = document.getElementById('container')
 			showStatus.hidden = true
-			this.timeInterval()
+			
 		},
 		displayConsole(){
 			//takes away the intro screen 
@@ -33,9 +33,8 @@
 			showStatus.hidden = false
 
 			this.print()
-			this.createSquares()
+			this.printSquares()
 		},
-
 		print(){
 
 			let UserName = document.getElementById("name").value
@@ -53,73 +52,68 @@
 			let timeDisplay = document.getElementById('timer')
 
 			timer.innerText = this.time
-
 		},
-
-
-		createSquares(){
-			for(let i = 0; i < 9; i++) {
-
-				const sq = new Square()
-
-				this.squares.push(sq)
-			}
-			this.printSquares()
-			
-		},
+		
 		printSquares(){
 			const container = document.getElementById('squareHolder')
 			for (let i = 0; i<this.squares.length; i++){
 				let newDiv = document.createElement("div");
 				newDiv.classList.add('square')
 				newDiv.setAttribute('id', i)
-				console.log(this.squares[i]);
-				//newDiv.setAttribute('background', 'color: red')
-				newDiv.style.color = "red"
+				//console.log(this.squares[i]);
 				container.appendChild(newDiv)
-
-
 			}
-			//this.displayMole()	
 		},
 		displayMole(){
-			this.randNum = Math.floor(Math.random()*9)
+			this.randNum = Math.floor(Math.random()*8)
 			this.moleLocation = document.getElementById(this.randNum)
+			//console.log("moleLocation ", this.moleLocation);
+			this.moleLocation.style.backgroundImage = "url(https://c7.uihere.com/files/447/597/308/whac-a-mole-crappy-flappy-moles-android-video-game-android-thumb.jpg)"
+			
 
-			console.log("moleLocation ", this.moleLocation);
 
-			this.moleLocation.style.backgroundImage = "url(https://cdn.imgbin.com/4/0/4/imgbin-mole-cartoon-panda-8a4dFFWDLpYvyvL3P6GvJJWq3.jpg)"
-			// if(this.moleLocation !== this.moleLocation){
-			// 	this.clearMole()
-			// }
-		},
-		clearMole(){
-			this.moleLocation.style.backgroundImage = "none"
-		},
-		timeInterval(time){
-			this.timerID = setInterval(() => {
-				this.time--
+		//console.log(this.moleLocation.id);
+		
+	},
+	clearMole(){
+		this.moleLocation.style.backgroundImage = "none"
+	},
+	timeInterval(time){
+		this.displayConsole()
+		this.timerID = setInterval(() => {
+			this.time--
 
-				if(this.time % 2 == 0){
-					this.displayMole()
+			if(this.time % 2 === 0){
+				this.displayMole()
 
-				}
-				else {
+			}
+			else {
+				this.clearMole()
+			}
 
-					this.clearMole()
-				}
+			if(this.time === 0){
 
-				if(this.time == 0){
-					
-					clearInterval(this.timerID)
-				}
-				this.print()
-			}, 1000)
-		},
+				clearInterval(this.timerID)
+			}
+			this.print()
+		}, 1000)
+	},
+	checkHit(loc){
+		if (loc === this.moleLocation){
+			this.score+=10
+		}
+		
 	}
-	
-	game.startGame()
-	document.getElementById('submit').addEventListener('click', function(){	
-		game.displayConsole()
-	})
-	
+}
+
+game.startGame()
+document.getElementById('submit').addEventListener('click', function(){	
+	game.timeInterval()
+})
+const locateDiv = document.querySelector("#squareHolder")
+locateDiv.addEventListener('click', (e) =>{
+	let locator = e.target
+	game.checkHit(locator)
+	//console.log("this is my location ", locator.id);
+} )
+
