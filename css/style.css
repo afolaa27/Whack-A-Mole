@@ -219,3 +219,27 @@ h1{
 	position:relative;
 	top:1px;
 }
+#buttonsR {
+	box-shadow: 0px 10px 14px -7px #277327;
+	background:linear-gradient(to bottom, #000000 5%, #409946 100%);
+	background-color:#000000;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3e8a3e;
+
+}
+#buttonsR:hover {
+	background:linear-gradient(to bottom, #409946 5%, #000000 100%);
+	background-color:#409946;
+}
+#buttonsR:active {
+	position:relative;
+	top:1px;
+}

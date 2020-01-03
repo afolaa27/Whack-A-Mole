@@ -137,4 +137,8 @@
 		game.restart()	
 		game.timeInterval()
 	})
+	document.getElementById('buttonsR').addEventListener('click', function(){
+		game.restart()	
+		
+	})
 
