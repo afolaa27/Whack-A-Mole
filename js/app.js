@@ -113,6 +113,10 @@
 				this.score+=10
 				this.print()
 			}
+			else {
+				this.score -=5
+				this.print()
+			}
 		},
 		restart(){
 			this.time = 30
