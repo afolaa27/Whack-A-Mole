@@ -11,6 +11,7 @@
 	const game = {
 		time: 30,
 		score: 0,
+		scoreLocator: "",
 		timeID: "",
 		difficulty: 0,
 		squares : [],
@@ -39,19 +40,22 @@
 
 			let UserName = document.getElementById("name").value
 			let user = document.getElementById("userN")
-			let diffLocation = document.getElementById("difficulty")
+		
 			//gets userName location from input box
-			this.difficulty = document.getElementById("number").value
+			
 
 			//displays the username in the game console
 			user.innerText = UserName
 			//displays the difficulty in the game console
-			diffLocation.innerText = this.difficulty
+			
 
 			//gets the timer location
 			let timeDisplay = document.getElementById('timer')
 
 			timer.innerText = this.time
+
+			this.scoreLocator = document.getElementById('score')
+			this.scoreLocator.innerText = this.score
 		},
 		
 		printSquares(){
@@ -101,6 +105,7 @@
 	checkHit(loc){
 		if (loc === this.moleLocation){
 			this.score+=10
+			this.print()
 		}
 		
 	}
