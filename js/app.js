@@ -11,6 +11,9 @@
 		const game = {
 			time: 30,
 			score: 0,
+			playerOneScore: 0,
+			playerTwoScore: 0,
+			turn: 'playerOne',
 			scoreLocator: "",
 			timeID: "",
 			difficulty: 0,
@@ -44,22 +47,23 @@
 
 				let UserName = document.getElementById("name").value
 				let user = document.getElementById("userN")
-
-				//gets userName location from input box
+				let userTwo = document.getElementById("playerTwoName").value
+				let secondUsername = document.getElementById('userN')
+				timer.innerText = this.time
 				
-
-				//displays the username in the game console
-				user.innerText = UserName
-				//displays the difficulty in the game console
-				
-
-				//gets the timer location
 				let timeDisplay = document.getElementById('timer')
 
-				timer.innerText = this.time
-
 				this.scoreLocator = document.getElementById('score')
-				this.scoreLocator.innerText = this.score
+
+
+				if (this.turn === 'playerOne'){
+					user.innerText = UserName
+					this.scoreLocator.innerText = this.score
+				}else if (this.turn === 'playerTwo'){
+					
+					secondUsername.innerText = userTwo
+					this.scoreLocator.innerText = this.score
+				}
 			},
 			
 			printSquares(){
@@ -91,7 +95,7 @@
 			this.timerID = setInterval(() => {
 				this.time--
 
-				if(this.time % 2 === 0){
+				if(this.time % 2 === 1){
 					this.displayMole()
 
 				}
@@ -102,6 +106,15 @@
 				if(this.time === 0){
 
 					clearInterval(this.timerID)
+					if (this.turn === 'playerOne'){
+
+						this.playerOneScore = this.score
+						console.log(this.playerOneScore);
+					}
+					else if (this.turn === 'playerTwo'){
+						this.playerTwoScore = this.score
+						
+					}
 					this.showStatus.hidden = true
 					this.showEnd.hidden = false
 				}
@@ -119,6 +132,7 @@
 			}
 		},
 		restart(){
+			this.turn = 'playerTwo'
 			this.time = 30
 			this.score = 0
 			this.showEnd.hidden = true
@@ -135,10 +149,11 @@
 	locateDiv.addEventListener('click', (e) =>{
 		let locator = e.target
 		game.checkHit(locator)
-		//console.log("this is my location ", locator.id);
+		
 	} )
 	document.getElementById('continue').addEventListener('click', function(){
-		game.restart()	
+		
+		game.restart()	 
 		game.timeInterval()
 	})
 	document.getElementById('buttonsR').addEventListener('click', function(){
