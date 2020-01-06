@@ -22,7 +22,11 @@
 			moleLocation: 0,
 			showStatus: "",
 			showInfoStatus: "",
-			showEnd: "",
+			showEnd: "", 
+			showWinLvl: "",
+			UserName: "",
+			userTwo: " ",
+
 			
 
 			startGame(){
@@ -30,6 +34,8 @@
 				this.showStatus.hidden = true
 				this.showEnd = document.getElementById('End')
 				this.showEnd.hidden = true
+				this.showWinLvl = document.getElementById('winLevelChecker')
+				this.showWinLvl.hidden = true
 			},
 			displayConsole(){
 				//takes away the intro screen 
@@ -45,9 +51,9 @@
 			},
 			print(){
 
-				let UserName = document.getElementById("name").value
+				this.UserName = document.getElementById("name").value
 				let user = document.getElementById("userN")
-				let userTwo = document.getElementById("playerTwoName").value
+				this.userTwo = document.getElementById("playerTwoName").value
 				let secondUsername = document.getElementById('userN')
 				timer.innerText = this.time
 				
@@ -57,11 +63,11 @@
 
 
 				if (this.turn === 'playerOne'){
-					user.innerText = UserName
+					user.innerText = this.UserName
 					this.scoreLocator.innerText = this.score
 				}else if (this.turn === 'playerTwo'){
 					
-					secondUsername.innerText = userTwo
+					secondUsername.innerText = this.userTwo
 					this.scoreLocator.innerText = this.score
 				}
 			},
@@ -110,16 +116,33 @@
 
 						this.playerOneScore = this.score
 						console.log(this.playerOneScore);
+						this.showEnd.hidden = false
 					}
 					else if (this.turn === 'playerTwo'){
 						this.playerTwoScore = this.score
+						console.log(this.playerTwoScore);
 						
+						this.displayScoreBoard()
+						this.showEnd.hidden = true
 					}
 					this.showStatus.hidden = true
-					this.showEnd.hidden = false
+
 				}
 				this.print()
 			}, 1000)
+		},
+		displayScoreBoard(){
+
+
+			let dispPlayerOneScore = document.getElementById('pOneScore')
+			let dispPlayerTwoScore = document.getElementById('pTwoScore')
+
+			let firstPlayerScoreBoard = this.UserName +" : " + this.playerOneScore
+			dispPlayerOneScore.innerText = firstPlayerScoreBoard
+			let secondPlayerScoreBoard = this.userTwo + " : " + this.playerTwoScore
+			dispPlayerTwoScore.innerText = secondPlayerScoreBoard
+			this.showWinLvl.hidden = false
+			this.showEnd.hidden = true
 		},
 		checkHit(loc){
 			if (loc === this.moleLocation){
@@ -135,7 +158,17 @@
 			this.turn = 'playerTwo'
 			this.time = 30
 			this.score = 0
+			this.clearMole()
 			this.showEnd.hidden = true
+		},
+		checkWinner(){
+
+			if (this.playerOneScore > this.playerTwoScore){
+
+			}
+			else {
+
+			}
 
 		}
 		
