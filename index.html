@@ -31,7 +31,7 @@
 		</div>
 
 		<div id='levelDiv'>
-			<h1>Level:</h1>
+			<h1>Level:<span id="level"></h1>
 		</div>
 
 		<div id='squareHolder'>
@@ -67,8 +67,16 @@
 		</div>
 	</div>
 	<div id="winLevelChecker">
-		<h1>-<span  id="pOneScore">0</span></h1>
-		<h1>-<span  id="pTwoScore">0</span></h1>
+		<h1><span  id="pOneScore">0</span></h1>
+		<h1><span  id="pTwoScore">0</span></h1>
+		<div id='levelWinner'>
+			<h1 id='levelWinnersName'></h1>
+			<button id ="continues"> Level Up </button>
+		</div>
+	</div>
+	<div id="gameWinner">
+		<h1 id='finalWinner'></h1>
+		<h1 id='roundsWons'></h1>
 	</div>
 </body>
 <script type="text/javascript" src ="js/app.js"></script>

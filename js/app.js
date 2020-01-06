@@ -9,7 +9,7 @@
 			}
 		}
 		const game = {
-			time: 30,
+			time: 10,
 			score: 0,
 			playerOneScore: 0,
 			playerTwoScore: 0,
@@ -26,8 +26,12 @@
 			showWinLvl: "",
 			UserName: "",
 			userTwo: " ",
+			levelSpeed: 800,
+			level : 1,
+			pOnelvlWon : 0,
+			pTwoLvlWon : 0,
+			finalWin: "",
 
-			
 
 			startGame(){
 				this.showStatus = document.getElementById('container')
@@ -36,6 +40,8 @@
 				this.showEnd.hidden = true
 				this.showWinLvl = document.getElementById('winLevelChecker')
 				this.showWinLvl.hidden = true
+				this.finalWin = document.getElementById('gameWinner')
+				this.finalWin.hidden = true
 			},
 			displayConsole(){
 				//takes away the intro screen 
@@ -60,7 +66,8 @@
 				let timeDisplay = document.getElementById('timer')
 
 				this.scoreLocator = document.getElementById('score')
-
+				let levelLocator = document.getElementById('level')
+				levelLocator.innerText = this.level 
 
 				if (this.turn === 'playerOne'){
 					user.innerText = this.UserName
@@ -115,25 +122,26 @@
 					if (this.turn === 'playerOne'){
 
 						this.playerOneScore = this.score
+
 						console.log(this.playerOneScore);
+						
 						this.showEnd.hidden = false
+						
 					}
 					else if (this.turn === 'playerTwo'){
 						this.playerTwoScore = this.score
 						console.log(this.playerTwoScore);
-						
-						this.displayScoreBoard()
+						this.checkWinner()
 						this.showEnd.hidden = true
 					}
 					this.showStatus.hidden = true
 
 				}
 				this.print()
-			}, 1000)
+			}, this.levelSpeed)
 		},
-		displayScoreBoard(){
-
-
+		displayScoreBoard(wins){
+			console.log("i got here : ", wins);
 			let dispPlayerOneScore = document.getElementById('pOneScore')
 			let dispPlayerTwoScore = document.getElementById('pTwoScore')
 
@@ -141,6 +149,11 @@
 			dispPlayerOneScore.innerText = firstPlayerScoreBoard
 			let secondPlayerScoreBoard = this.userTwo + " : " + this.playerTwoScore
 			dispPlayerTwoScore.innerText = secondPlayerScoreBoard
+
+			let levelWinnerLocation = document.getElementById("levelWinnersName")
+			let lvlwinner = wins +  " wins this level"
+			levelWinnerLocation.innerText =  lvlwinner
+
 			this.showWinLvl.hidden = false
 			this.showEnd.hidden = true
 		},
@@ -155,8 +168,8 @@
 			}
 		},
 		restart(){
-			this.turn = 'playerTwo'
-			this.time = 30
+			//this.turn = 'playerOne'
+			this.time = 10
 			this.score = 0
 			this.clearMole()
 			this.showEnd.hidden = true
@@ -164,12 +177,51 @@
 		checkWinner(){
 
 			if (this.playerOneScore > this.playerTwoScore){
+				game.displayScoreBoard(this.UserName)
+				this.pOnelvlWon +=1
+				this.levelIncrease()
+			}
+			else if (this.playerOneScore === this.playerTwoScore) {
+				let tie = "Its a tie"
+				game.displayScoreBoard(tie)
 
 			}
-			else {
-
+			else{
+				game.displayScoreBoard(this.userTwo)
+				this.levelIncrease()
+				this.pTwoLvlWon +=1
 			}
 
+		},
+		levelIncrease(){
+			this.levelSpeed-=100
+			this.level+=1
+			this.checkEndGame()
+
+		},
+		checkEndGame(){
+			let champion = ""
+			champion =document.getElementById('finalWinner')
+			if (this.level > 3){
+				this.showEnd.hidden = true
+				this.showWinLvl.hidden = true
+				this.finalWin.hidden = false
+				if (this.pOnelvlWon > this.pTwoLvlWon){
+					
+					champion.innerText = this.UserName + " WINS THE GAME"
+				}else{
+					champion.innerText = this.userTwo + " WINS THE GAME"
+				}
+			}
+
+		},
+		changeTurn(){
+			if (this.turn == "playerOne"){
+				this.turn = "playerTwo"
+			}
+			else{
+				this.turn = "playerOne"
+			}
 		}
 		
 	}
@@ -187,10 +239,19 @@
 	document.getElementById('continue').addEventListener('click', function(){
 		
 		game.restart()	 
+		game.changeTurn()
 		game.timeInterval()
 	})
 	document.getElementById('buttonsR').addEventListener('click', function(){
 		game.restart()	
 		
 	})
+	document.getElementById('continues').addEventListener('click', function(){
+		game.restart()
+		game.changeTurn()
+
+		game.showWinLvl.hidden = true
+		game.timeInterval()
+	})
+
 
