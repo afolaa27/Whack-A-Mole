@@ -42,8 +42,8 @@
 				this.showWinLvl.hidden = true
 				this.finalWin = document.getElementById('gameWinner')
 				this.finalWin.hidden = true
-				this.endButtonDiv = document.getElementById('buttonDivEnd')
-				this.endButtonDiv.hidden = true
+				/*this.endButtonDiv = document.getElementById('buttonDivEnd')
+				this.endButtonDiv.hidden = true*/
 			},
 			displayConsole(){
 				//takes away the intro screen 
