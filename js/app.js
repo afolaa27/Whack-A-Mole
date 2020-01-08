@@ -1,4 +1,3 @@
-		console.log('Whack A Mole');
 
 
 		class Square {
@@ -9,7 +8,7 @@
 			}
 		}
 		const game = {
-			time: 10,
+			time: 30,
 			score: 0,
 			playerOneScore: 0,
 			playerTwoScore: 0,
@@ -28,9 +27,10 @@
 			userTwo: " ",
 			levelSpeed: 800,
 			level : 1,
-			pOnelvlWon : 0,
-			pTwoLvlWon : 0,
+			pOneLvlWon : 1,
+			pTwoLvlWon : 1,
 			finalWin: "",
+			endButtonDiv: "",
 
 
 			startGame(){
@@ -42,6 +42,8 @@
 				this.showWinLvl.hidden = true
 				this.finalWin = document.getElementById('gameWinner')
 				this.finalWin.hidden = true
+				this.endButtonDiv = document.getElementById('buttonDivEnd')
+				this.endButtonDiv.hidden = true
 			},
 			displayConsole(){
 				//takes away the intro screen 
@@ -84,16 +86,24 @@
 				for (let i = 0; i<this.squares.length; i++){
 					let newDiv = document.createElement("div");
 					newDiv.classList.add('square')
-					newDiv.setAttribute('id', i)
+					newDiv.setAttribute('id', `h${i}`)
+
 					//console.log(this.squares[i]);
 					container.appendChild(newDiv)
+					console.log(container);
+
 				}
 			},
 			displayMole(){
 				this.randNum = Math.floor(Math.random()*8)
-				this.moleLocation = document.getElementById(this.randNum)
+				let value = "h"
+				let locas = value+this.randNum
+				console.log(locas);
+				this.moleLocation = document.getElementById(locas)
 				//console.log("moleLocation ", this.moleLocation);
-				this.moleLocation.style.backgroundImage = "url(https://c7.uihere.com/files/447/597/308/whac-a-mole-crappy-flappy-moles-android-video-game-android-thumb.jpg)"
+
+
+				this.moleLocation.style.backgroundImage = "url(https://www.stickpng.com/assets/images/59aeb64032bcd87615d27983.png)"
 				
 
 
@@ -169,7 +179,8 @@
 		},
 		restart(){
 			//this.turn = 'playerOne'
-			this.time = 10
+
+			this.time = 30
 			this.score = 0
 			this.clearMole()
 			this.showEnd.hidden = true
@@ -178,7 +189,7 @@
 
 			if (this.playerOneScore > this.playerTwoScore){
 				game.displayScoreBoard(this.UserName)
-				this.pOnelvlWon +=1
+				this.pOneLvlWon +=1
 				this.levelIncrease()
 			}
 			else if (this.playerOneScore === this.playerTwoScore) {
@@ -194,7 +205,7 @@
 
 		},
 		levelIncrease(){
-			this.levelSpeed-=100
+			this.levelSpeed-=200
 			this.level+=1
 			this.checkEndGame()
 
@@ -202,6 +213,8 @@
 		checkEndGame(){
 			let champion = ""
 			champion =document.getElementById('finalWinner')
+			let roundWon = document.getElementById('roundsWon')
+
 			if (this.level > 3){
 				this.showEnd.hidden = true
 				this.showWinLvl.hidden = true
@@ -209,11 +222,18 @@
 				if (this.pOnelvlWon > this.pTwoLvlWon){
 					
 					champion.innerText = this.UserName + " WINS THE GAME"
+					roundWon.innerText = this.pOneLvlWon + " level(s) Won "
+					this.endButtonDiv.hidden = false
+
 				}else{
 					champion.innerText = this.userTwo + " WINS THE GAME"
+					roundWon.innerText = this.pTwoLvlWon + " level(s) Won "
+					this.endButtonDiv.hidden = false
 				}
 			}
-
+			let celebrationDivLocator = document.getElementById('gameWinner')
+			celebrationDivLocator.style.backgroundImage = "url(https://media.giphy.com/media/5jT0jaNDsM6Ik7X9yq/giphy.gif)"
+			
 		},
 		changeTurn(){
 			if (this.turn == "playerOne"){
@@ -252,6 +272,15 @@
 
 		game.showWinLvl.hidden = true
 		game.timeInterval()
+	})
+	document.getElementById('buttonsRestart').addEventListener('click', function(){
+		this.level = 1
+		game.restart()
+		this.levelSpeed = 800
+		this.showInfoStatus.hidden = false
+		game.timeInterval()
+		this.endButtonDiv.hidden = true
+		
 	})
 
 

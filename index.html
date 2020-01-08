@@ -11,7 +11,7 @@
 
 		<div id = "startValues">
 			<input type="text" name="nameBox" id ="name" placeholder="Enter Your UserName">
-				
+
 		</div>
 		<div id = 'submitButton'>
 			<button id ="submit"> Submit </button>
@@ -32,52 +32,56 @@
 
 		<div id='levelDiv'>
 			<h1>Level:<span id="level"></h1>
-		</div>
+			</div>
 
-		<div id='squareHolder'>
-			<div class="square" id="0" clicked=false></div>
-			<div class="square" id="1" clicked=false></div>
-			<div class="square" id="2" clicked=false></div>
-			<div class="square" id="3" clicked=false></div>
-			<div class="square" id="4" clicked=false></div>
-			<div class="square" id="5" clicked=false></div>
-			<div class="square" id="6" clicked=false></div>
-			<div class="square" id="7" clicked=false></div>
-			<div class="square" id="8" clicked=false></div>
-		</div>
+			<div id='squareHolder'>
+				<div class="square" id="h0" clicked=false></div>
+				<div class="square" id="h1" clicked=false></div>
+				<div class="square" id="h2" clicked=false></div>
+				<div class="square" id="h3" clicked=false></div>
+				<div class="square" id="h4" clicked=false></div>
+				<div class="square" id="h5" clicked=false></div>
+				<div class="square" id="h6" clicked=false></div>
+				<div class="square" id="h7" clicked=false></div>
+				<div class="square" id="h8" clicked=false></div>
+			</div>
 
-		<div id =buttonDiv>
-			<button id='buttonsR'>Restart</button>
+			<div id =buttonDiv>
+				<button id='buttonsR'>Restart</button>
+				<!-- <button id='buttons'>Quit</button> -->
+			</div>
+
+		</div>
+		<div id ="End">
+			<h1>Second Player's Turn</h1>
+
+			<div id='properties'>
+				<div id = "startValues">
+					<input type="text" name="nameBox" id ="playerTwoName" placeholder="Enter Your UserName">
+
+				</div>
+				<div id='submitButton'>
+					<button id ="continue"> Continue </button>
+				</div>
+
+			</div>
+		</div>
+		<div id="winLevelChecker">
+			<h1><span  id="pOneScore">0</span></h1>
+			<h1><span  id="pTwoScore">0</span></h1>
+			<div id='levelWinner'>
+				<h1 id='levelWinnersName'></h1>
+				<button id ="continues"> Level Up </button>
+			</div>
+		</div>
+		<div id="gameWinner">
+			<h1 id='finalWinner'></h1>
+			<h1 id='roundsWon'></h1>
+		</div>
+		<!-- <div id =buttonDivEnd>
+			<button id='buttonsRestart'>Restart</button>
 			<button id='buttons'>Quit</button>
-		</div>
-
-	</div>
-	<div id ="End">
-		<h1>Second Player's Turn</h1>
-		
-		<div id='properties'>
-			<div id = "startValues">
-			<input type="text" name="nameBox" id ="playerTwoName" placeholder="Enter Your UserName">
-				
-		</div>
-		<div id='submitButton'>
-			<button id ="continue"> Continue </button>
-		</div>
-			
-		</div>
-	</div>
-	<div id="winLevelChecker">
-		<h1><span  id="pOneScore">0</span></h1>
-		<h1><span  id="pTwoScore">0</span></h1>
-		<div id='levelWinner'>
-			<h1 id='levelWinnersName'></h1>
-			<button id ="continues"> Level Up </button>
-		</div>
-	</div>
-	<div id="gameWinner">
-		<h1 id='finalWinner'></h1>
-		<h1 id='roundsWons'></h1>
-	</div>
-</body>
-<script type="text/javascript" src ="js/app.js"></script>
-</html>
+		</div> -->
+	</body>
+	<script type="text/javascript" src ="js/app.js"></script>
+	</html>
