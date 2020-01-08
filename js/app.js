@@ -273,7 +273,7 @@
 		game.showWinLvl.hidden = true
 		game.timeInterval()
 	})
-	document.getElementById('buttonsRestart').addEventListener('click', function(){
+	/*document.getElementById('buttonsRestart').addEventListener('click', function(){
 		this.level = 1
 		game.restart()
 		this.levelSpeed = 800
@@ -281,6 +281,6 @@
 		game.timeInterval()
 		this.endButtonDiv.hidden = true
 		
-	})
+	})*/
 
 
